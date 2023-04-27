@@ -1,4 +1,4 @@
-import { Event } from ".";
+import { EventInterface } from ".";
 
 export interface TicketMasterResponse {
   _embedded: Embedded;
@@ -7,7 +7,7 @@ export interface TicketMasterResponse {
 }
 
 export interface Embedded {
-  events: Event[];
+  events: EventInterface[];
 }
 
 export interface Links {

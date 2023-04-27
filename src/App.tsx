@@ -1,11 +1,45 @@
-import { useAppDispatch, useAppSelector } from "./store";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+
+import { useAppDispatch } from "./store";
 import { fetchAllEvents } from "./store/eventActions";
+
+import { Home, NotFound } from "./pages";
+// import NotFound from "./pages";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import Hero from "./components/Hero/Hero";
-import Search from "./components/Search/Search";
-import Events from "./components/Events/Events";
+
+const Layout = () => {
+  return (
+    <div className="App">
+      <Header />
+      <Outlet />
+      <Footer />
+    </div>
+  );
+};
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      // Event Detail Page
+      // {
+      //   path: "/event/:id",
+      //   element: <Event />,
+      // },
+      {
+        path: "*",
+        element: <NotFound />,
+      },
+    ],
+  },
+]);
 
 function App() {
   // fetch all events onload
@@ -14,11 +48,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <Hero />
-      <Search />
-      <Events />
-      <Footer />
+      <RouterProvider router={router} />
     </div>
   );
 }
