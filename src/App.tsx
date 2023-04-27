@@ -1,12 +1,23 @@
-import Header from "../src/components/Header/Header";
-import Footer from "../src/components/Footer/Footer";
-// import './App.css';
+import { useAppDispatch, useAppSelector } from "./store";
+import { fetchAllEvents } from "./store/eventActions";
+
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import Hero from "./components/Hero/Hero";
+import Search from "./components/Search/Search";
+import Events from "./components/Events/Events";
 
 function App() {
+  // fetch all events onload
+  const dispatch = useAppDispatch();
+  dispatch(fetchAllEvents());
+
   return (
     <div className="App">
       <Header />
-      <h1 className="container">Say Something</h1>
+      <Hero />
+      <Search />
+      <Events />
       <Footer />
     </div>
   );
