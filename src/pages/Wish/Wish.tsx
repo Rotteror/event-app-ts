@@ -1,11 +1,14 @@
 // import "/wish.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import jsPDF from "jspdf";
+import { useRef } from "react";
 import { useAppDispatch, useAppSelector } from "../../store";
 import WishItem from "../../components/Wish/WishItem";
 const Wish = () => {
+  const wishTemplate = useRef("");
   const currentWishList = useAppSelector(({ event }) => event.events[0]);
+
   const plainWish: any = [
     {
       image:
@@ -15,8 +18,32 @@ const Wish = () => {
       eventId: "G5v0Z9JD6ndYG",
     },
   ];
+
+  const handleGeneratePdf = async () => {
+    const pdf = new jsPDF({
+      orientation: "p",
+      unit: "pt",
+      format: "letter",
+      putOnlyUsedFonts: true,
+      compress: true,
+    });
+
+    pdf.setFont("Inter-Regular", "sans-serif");
+
+    await pdf.html(wishTemplate.current, {
+      width: 580,
+      windowWidth: 880,
+      margin: 15,
+      filename: `my-wishlist`,
+    });
+    pdf.save();
+  };
+
   return (
-    <div className="container">
+    <div className="container" ref={wishTemplate as any}>
+      <button className="button" onClick={handleGeneratePdf}>
+        CLICK ME
+      </button>
       {plainWish.map((wish: any) => (
         <WishItem {...wish} />
       ))}
