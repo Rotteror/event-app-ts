@@ -1,13 +1,13 @@
 import { setCurrentEvent, setEvents, setSuggesedEvents } from "./eventSlice";
 import { AnyAction } from "@reduxjs/toolkit";
 import { ThunkAction } from "@reduxjs/toolkit";
-import { RootState } from "./index";
+import { RootState } from "../index";
 import {
   getAllEvents,
   getSuggestedEvents,
   getEventDetail,
-} from "../service/eventService";
-import { TicketMasterResponse } from "../models/apiModels";
+} from "../../service/eventService";
+import { TicketMasterResponse } from "../../models/apiModels";
 
 export const fetchAllEvents = (): ThunkAction<
   void,

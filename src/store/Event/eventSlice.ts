@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { EventInterface } from "../models/index";
-import { Suggested, Attractions, Products, Venue } from "../models/suggest";
+import { EventInterface } from "../../models/index";
+import { Suggested, Attractions, Products, Venue } from "../../models/suggest";
 
 type State = {
   events: EventInterface[];

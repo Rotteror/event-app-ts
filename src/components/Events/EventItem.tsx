@@ -10,7 +10,7 @@ const EventItem = (props: EventInterface) => {
   return (
     <div onClick={() => navigateToDetails(props.id)} className="event-card">
       <div className="image-wrap">
-        <img src={props.images[0].url} alt="" />
+        <img src={props.images[0]?.url} alt="" />
       </div>
       <div className="event-titles">
         <h3>

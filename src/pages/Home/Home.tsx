@@ -2,7 +2,7 @@ import Hero from "../../components/Hero/Hero";
 import Search from "../../components/Search/Search";
 import Events from "../../components/Events/Events";
 import { useAppDispatch } from "../../store";
-import { fetchSuggestedEvenets } from "../../store/eventActions";
+import { fetchSuggestedEvenets } from "../../store/Event/eventActions";
 
 const Home = () => {
   const dispatch = useAppDispatch();

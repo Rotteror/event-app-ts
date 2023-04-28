@@ -16,6 +16,9 @@ const Header = () => {
       <div className="secondary">
         <ul className="header-menu">
           <li>Search</li>
+          <li>
+            <a href="/event/:id">Profile</a>
+          </li>
           <li>Login</li>
           <li>Cart</li>
         </ul>

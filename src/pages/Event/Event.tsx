@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../store";
-import { fetctEventDetail } from "../../store/eventActions";
+import { fetctEventDetail } from "../../store/Event/eventActions";
 
 import Loader from "../../components/shared/Loader";
 import { formatDateRange, findDigit } from "../../util";

@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 import { useAppDispatch } from "./store";
-import { fetchAllEvents } from "./store/eventActions";
+import { fetchAllEvents } from "./store/Event/eventActions";
 
 import { Home, NotFound, Event } from "./pages";
 

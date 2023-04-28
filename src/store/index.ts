@@ -1,6 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import eventReducer from './eventSlice';
+import eventReducer from './Event/eventSlice';
 
 export const store = configureStore({
   reducer: {
