@@ -27,6 +27,7 @@ export async function getEventDetail(id: string): Promise<any> {
     method: "GET",
     url: `${URLS.DETAIL}${id}.json${API_KEY}`,
   });
+  
   return data as any;
 }
 

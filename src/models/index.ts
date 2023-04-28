@@ -128,6 +128,7 @@ export interface PreSale {
 
 export interface StartDate {
   localDate: string | Date;
+  localTime: string;
   dateTBD: boolean;
   dateTBA: boolean;
   timeTBA: boolean;

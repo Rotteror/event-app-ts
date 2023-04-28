@@ -1,0 +1,79 @@
+img {
+  width: 100%;
+}
+
+.title {
+  margin: 5rem 0;
+  text-align: center;
+}
+
+.detail {
+  margin: 10rem 0;
+  gap: 1rem;
+}
+
+.img-staticUrl {
+  margin-top: -1rem;
+}
+
+.dates {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  padding: 0.5rem;
+}
+
+.content-p {
+  padding: 0.5rem 0;
+}
+
+.action-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.action {
+  display: flex;
+  gap: 2rem;
+  flex: 1;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.note {
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.cta-button {
+  padding: 2rem 5rem;
+  font-size: 2rem;
+  border-radius: 10px;
+  background-color: var(--color-grey-6);
+  color: var(--color-grey-9);
+}
+
+.cta-button:hover {
+  border: none;
+  background-color: inherit;
+  color: var(--color-grey-1);
+}
+
+.quantity {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.quantity > button {
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  border: none;
+}
