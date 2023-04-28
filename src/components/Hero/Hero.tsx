@@ -1,6 +1,12 @@
 import "./hero.css";
+import { useAppSelector } from "../../store";
+import { Attractions } from "../../models";
+import HeroSection from "./HeroSection";
 
 const Hero = () => {
+  const { attractions } = useAppSelector(
+    (state) => state.event.suggestedEvents
+  );
   return (
     <div className="hero-section">
       <div className="hero-wrap">
@@ -9,86 +15,9 @@ const Hero = () => {
         </div>
       </div>
       <div className="suggested-events-wrap">
-        <div className="event-section" style={{ zIndex: 6 }}>
-          <div className="overlay"></div>
-          <a className="event-link" href="_blank">
-            <div className="event">
-              <h6>Data: 04.05.23</h6>
-              <h4>
-                <span>Title: Some Title</span>
-                <br />
-                <span>Category: Digital Category</span>
-              </h4>
-              <div className="event-content">
-                <p>
-                  It is a long established fact that a reader will be distracted
-                  by the readable content... It is a long established fact that
-                  a reader will be distracted by the readable content...
-                </p>
-              </div>
-            </div>
-          </a>
-        </div>
-        {/* 2 */}
-        <div className="event-section">
-          <div className="overlay"></div>
-          <a className="event-link" href="_blank">
-            <div className="event">
-              <h6>Data: 04.05.23</h6>
-              <h4>
-                <span>Title: Some Title</span>
-                <br />
-                <span>Category: Digital Category</span>
-              </h4>
-              <div className="event-content">
-                <p>
-                  It is a long established fact that a reader will be distracted
-                  by the readable content...
-                </p>
-              </div>
-            </div>
-          </a>
-        </div>
-        {/* 3 */}
-        <div className="event-section">
-          <div className="overlay"></div>
-          <a className="event-link" href="_blank">
-            <div className="event">
-              <h6>Data: 04.05.23</h6>
-              <h4>
-                <span>Title: Some Title</span>
-                <br />
-                <span>Category: Digital Category</span>
-              </h4>
-              <div className="event-content">
-                <p>
-                  It is a long established fact that a reader will be distracted
-                  by the readable content...
-                </p>
-              </div>
-            </div>
-          </a>
-        </div>
-        {/* 4 */}
-        <div className="event-section">
-          <div className="overlay"></div>
-          <a className="event-link" href="_blank">
-            <div className="event">
-              <h6>Data: 04.05.23</h6>
-              <h4>
-                <span>Title: Some Title</span>
-                <br />
-                <span>Category: Digital Category</span>
-              </h4>
-              <div className="event-content">
-                <p>
-                  It is a long established fact that a reader will be distracted
-                  by the readable content...
-                </p>
-              </div>
-            </div>
-          </a>
-        </div>
+        {attractions.slice(0, 4).map((attraction) => (
+          <HeroSection {...attraction} />
+        ))}
       </div>
     </div>
   );

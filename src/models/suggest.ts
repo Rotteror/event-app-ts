@@ -37,6 +37,13 @@ export interface Venue {
   };
 }
 
+export interface UpcomingEvents {
+  _total: number;
+  tmr: number;
+  ticketmaster: number;
+  _filtered: number;
+}
+
 export interface Attractions {
   name: string;
   type: string;
@@ -46,17 +53,17 @@ export interface Attractions {
   externalLinks: any; // YouTube, Facebook etc
   images: Image[];
   classifications: Classifications[];
-  upcomingEvents: {
-    _total: 24;
-    tmr: 18;
-    ticketmaster: 6;
-    _filtered: 0;
-  };
+  upcomingEvents: UpcomingEvents;
   _links: {
     self: {
       href: string;
     };
   };
+}
+
+export interface Location {
+  longitude: string;
+  latitude: string;
 }
 
 export interface Products {
@@ -68,10 +75,7 @@ export interface Products {
   images: Image[];
   dates: Dates;
   classifications: Classifications[];
-  location: {
-    longitude: string;
-    latitude: string;
-  };
+  location: Location;
   _links: any;
   attractions: any;
   venues: any;

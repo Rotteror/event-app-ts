@@ -1,21 +1,38 @@
-const HeroSection = () => {
+import { useState } from "react";
+import { Attractions } from "../../models/suggest";
+
+const HeroSection = (attraction: Attractions) => {
+  const [isHover, setIsHover] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHover(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHover(false);
+  };
+
+  const colorHeroEvent = {
+    color: isHover ? "#f7f7f7" : "#94a3b8",
+  };
+
   return (
-    <div className="event-section" style={{ zIndex: 6 }}>
-      <div className="overlay"></div>
-      <a className="event-link" href="_blank">
-        <div className="event">
-          <h6>Data: 04.05.23</h6>
+    <div className="event-section">
+      <a className="event-link" href={attraction.url} target="_blank">
+        <div
+          style={colorHeroEvent}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          className="event"
+        >
+          <h6>Data: TBD</h6>
           <h4>
-            <span>Title: Some Title</span>
+            <span>{attraction.name}</span>
             <br />
-            <span>Category: Digital Category</span>
+            <span>{attraction.type}</span>
           </h4>
           <div className="event-content">
-            <p>
-              It is a long established fact that a reader will be distracted by
-              the readable content... It is a long established fact that a
-              reader will be distracted by the readable content...
-            </p>
+            <p>Some Text Must be added here.......</p>
           </div>
         </div>
       </a>
