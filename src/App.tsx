@@ -3,8 +3,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { useAppDispatch } from "./store";
 import { fetchAllEvents } from "./store/eventActions";
 
-import { Home, NotFound } from "./pages";
-// import NotFound from "./pages";
+import { Home, NotFound, Event } from "./pages";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -29,10 +28,10 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       // Event Detail Page
-      // {
-      //   path: "/event/:id",
-      //   element: <Event />,
-      // },
+      {
+        path: "/event/:id",
+        element: <Event />,
+      },
       {
         path: "*",
         element: <NotFound />,

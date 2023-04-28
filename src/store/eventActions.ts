@@ -1,8 +1,12 @@
-import { setEvents, setSuggesedEvents } from "./eventSlice";
+import { setCurrentEvent, setEvents, setSuggesedEvents } from "./eventSlice";
 import { AnyAction } from "@reduxjs/toolkit";
 import { ThunkAction } from "@reduxjs/toolkit";
 import { RootState } from "./index";
-import { getAllEvents, getSuggestedEvents } from "../service/eventService";
+import {
+  getAllEvents,
+  getSuggestedEvents,
+  getEventDetail,
+} from "../service/eventService";
 import { TicketMasterResponse } from "../models/apiModels";
 
 export const fetchAllEvents = (): ThunkAction<
@@ -31,5 +35,14 @@ export const fetchSuggestedEvenets = (): ThunkAction<
       const data: any = await getSuggestedEvents();
       dispatch(setSuggesedEvents(data));
     }
+  };
+};
+
+export const fetctEventDetail = (
+  id: string
+): ThunkAction<void, RootState, unknown, AnyAction> => {
+  return async (dispatch, getState) => {
+    const data: any = await getEventDetail(id);
+    dispatch(setCurrentEvent(data));
   };
 };

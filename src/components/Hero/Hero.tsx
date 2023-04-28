@@ -16,7 +16,7 @@ const Hero = () => {
       </div>
       <div className="suggested-events-wrap">
         {attractions.slice(0, 4).map((attraction) => (
-          <HeroSection {...attraction} />
+          <HeroSection {...attraction} key={attraction.id} />
         ))}
       </div>
     </div>

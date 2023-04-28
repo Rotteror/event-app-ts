@@ -1,8 +1,14 @@
 import { EventInterface } from "../../models/index";
+import { useNavigate } from "react-router-dom";
 
 const EventItem = (props: EventInterface) => {
+  const navigate = useNavigate();
+  const navigateToDetails = (id: string) => {
+    navigate(`/event/${id}`);
+  };
+
   return (
-    <div className="event-card">
+    <div onClick={() => navigateToDetails(props.id)} className="event-card">
       <div className="image-wrap">
         <img src={props.images[0].url} alt="" />
       </div>

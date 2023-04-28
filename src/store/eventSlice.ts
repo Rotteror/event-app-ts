@@ -10,6 +10,7 @@ type State = {
     venues: Venue[];
     events: EventInterface[];
   };
+  currentEvent: EventInterface;
 };
 
 const initialState: State = {
@@ -20,6 +21,7 @@ const initialState: State = {
     venues: [],
     events: [],
   },
+  currentEvent: {} as EventInterface,
 };
 
 const eventSlice = createSlice({
@@ -37,8 +39,13 @@ const eventSlice = createSlice({
       suggestedEvents.venues = venues;
       suggestedEvents.products = products;
     },
+
+    setCurrentEvent(state, action: PayloadAction<EventInterface>) {
+      state.currentEvent = action.payload;
+    },
   },
 });
 
-export const { setEvents, setSuggesedEvents } = eventSlice.actions;
+export const { setEvents, setSuggesedEvents, setCurrentEvent } =
+  eventSlice.actions;
 export default eventSlice.reducer;

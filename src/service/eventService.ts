@@ -1,5 +1,5 @@
 import axios from "axios";
-import { URLS } from "../config";
+import { API_KEY, URLS } from "../config";
 import { TicketMasterResponse } from "../models/apiModels";
 
 export async function getAllEvents(): Promise<any> {
@@ -17,7 +17,16 @@ export async function getSuggestedEvents(): Promise<any> {
     url: URLS.SUGGEST,
   });
 
+  //   import correct interface
   return data._embedded as any;
+}
+
+export async function getEventDetail(id: string): Promise<any> {
+  const { data } = await axios({
+    method: "GET",
+    url: `${URLS.DETAIL}${id}.json${API_KEY}`,
+  });
+  return data as any;
 }
 
 // export async function getAllEvents(): Promise<any> {
