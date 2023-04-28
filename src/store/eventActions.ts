@@ -41,7 +41,7 @@ export const fetchSuggestedEvenets = (): ThunkAction<
 export const fetctEventDetail = (
   id: string
 ): ThunkAction<void, RootState, unknown, AnyAction> => {
-  return async (dispatch, getState) => {
+  return async (dispatch, _) => {
     const data: any = await getEventDetail(id);
     dispatch(setCurrentEvent(data));
   };

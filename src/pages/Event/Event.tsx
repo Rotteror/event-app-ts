@@ -1,33 +1,43 @@
 import "./event.css";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../store";
 import { fetctEventDetail } from "../../store/eventActions";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+
+import Loader from "../../components/shared/Loader";
 
 const Event = () => {
   // initial event detail load!
   // TODO improve this steps!
+  const [loading, setLoading] = useState(true);
   const id = useParams().id as string;
+
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetctEventDetail(id));
+    setLoading(false);
   }, []);
 
   const currentEvent = useAppSelector((state) => state.event.currentEvent);
 
-  return (
+  console.log(currentEvent);
+
+  return loading ? (
     <div>
-      <p style={{ background: "red" }}>Some text</p>
-      <h1>{currentEvent.name}</h1>
+      <Loader />
+    </div>
+  ) : (
+    <div>
       <div className="container">
+        <h1>{currentEvent.name}</h1>
         <div className="grid grid--2-cols">
           <div className="info-section">
             <div className="img-container">
-              <img src='currentEvent.url' alt=''/>
+              <img src={currentEvent.images[0].url} alt="" />
             </div>
             <div className="dates">
-              <h6>Date</h6>
+              <h6>{JSON.stringify(currentEvent.dates.start.localDate)}</h6>
               <p className="content-p"> 9:00PM</p>
             </div>
             <div className="dates">

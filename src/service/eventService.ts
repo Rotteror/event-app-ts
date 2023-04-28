@@ -22,6 +22,7 @@ export async function getSuggestedEvents(): Promise<any> {
 }
 
 export async function getEventDetail(id: string): Promise<any> {
+
   const { data } = await axios({
     method: "GET",
     url: `${URLS.DETAIL}${id}.json${API_KEY}`,
