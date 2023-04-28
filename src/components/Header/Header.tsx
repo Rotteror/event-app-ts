@@ -8,19 +8,31 @@ const Header = () => {
       </div>
       <div className="primary">
         <ul className="header-menu">
-          <li>Events</li>
-          <li>Gallery</li>
-          <li>Create Event</li>
+          <li>
+            <a href="/">Events</a>
+          </li>
+          <li>
+            <a href="/wishlist">Gallery</a>
+          </li>
+          <li>
+            <a href="/wishlist">Create Event</a>
+          </li>
         </ul>
       </div>
       <div className="secondary">
         <ul className="header-menu">
-          <li>Search</li>
           <li>
-            <a href="/wish">Profile</a>
+            <a href="/wishlist">Search</a>
           </li>
-          <li>Login</li>
-          <li>Cart</li>
+          <li>
+            <a href="/wishlist">Profile</a>
+          </li>
+          <li>
+            <a href="/wishlist">Login</a>
+          </li>
+          <li>
+            <a href="/wishlist">Cart</a>
+          </li>
         </ul>
       </div>
     </header>
