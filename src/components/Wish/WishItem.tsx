@@ -1,19 +1,27 @@
-import "wish.css";
+import "./wishitem.css";
+import { useNavigate } from "react-router-dom";
 
-const WishItem = () => {
+const WishItem = ({ image, text, tickets, eventId }: any) => {
+  const navigate = useNavigate();
+  const navigateToDetails = (id: string) => {
+    navigate(`/event/${id}`);
+  };
   return (
-      <div className="wrapper">
-        <div className="img-container">
-          <img src="_blank" alt="" />
-        </div>
-        <div className="text-event">some text</div>
-        <div className="cta-info">
-          <p>
-            <label>Quantity: 15</label>
-          </p>
-          <button>Event Details</button>
-        </div>
+    <div className="wrapper">
+      <div className="img-container">
+        <img src={image} alt="" />
       </div>
+      <div className="text-event">{text}</div>
+      <div className="cta-info">
+        <p className="tickets">
+          <strong>Quantity:</strong>
+          <label>{tickets}</label>
+        </p>
+        <button className="cta" onClick={() => navigateToDetails(eventId)}>
+          Details
+        </button>
+      </div>
+    </div>
   );
 };
 

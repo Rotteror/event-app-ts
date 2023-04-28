@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import Hero from "../../components/Hero/Hero";
 import Search from "../../components/Search/Search";
 import Events from "../../components/Events/Events";
@@ -6,7 +8,10 @@ import { fetchSuggestedEvenets } from "../../store/Event/eventActions";
 
 const Home = () => {
   const dispatch = useAppDispatch();
-  dispatch(fetchSuggestedEvenets());
+  useEffect(() => {
+    dispatch(fetchSuggestedEvenets());
+  }, []);
+
   return (
     <div>
       <Hero />

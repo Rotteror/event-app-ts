@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <header className="site-header">
       <div className="logo-area primary-heading">
-        <a href="_blank">Web Event App</a>
+        <a href="/">Web Event App</a>
       </div>
       <div className="primary">
         <ul className="header-menu">
@@ -17,7 +17,7 @@ const Header = () => {
         <ul className="header-menu">
           <li>Search</li>
           <li>
-            <a href="/event/:id">Profile</a>
+            <a href="/wish">Profile</a>
           </li>
           <li>Login</li>
           <li>Cart</li>
