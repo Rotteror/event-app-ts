@@ -29,11 +29,13 @@ const userSlice = createSlice({
     setUser(state, action: PayloadAction<User>) {
       state.user = action.payload;
     },
-    addWishList(state, action: PayloadAction<any>) {
-      //   state.user.wishList = [...action.payload];
+    addWishList(state, action: PayloadAction<unknown>) {
+      console.log(action.payload);
+    //   state.user.wishList.push(action.payload);
+      //   state.user.wishList.push(action);
     },
   },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, addWishList } = userSlice.actions;
 export default userSlice.reducer;

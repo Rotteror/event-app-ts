@@ -1,4 +1,4 @@
-// import "/wish.css";
+import "./wish.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import jsPDF from "jspdf";
@@ -40,13 +40,15 @@ const Wish = () => {
   };
 
   return (
-    <div className="container" ref={wishTemplate as any}>
-      <button className="button" onClick={handleGeneratePdf}>
-        CLICK ME
+    <div className="wish-list">
+      <button className="button-pdf" onClick={handleGeneratePdf}>
+        Download as PDF
       </button>
-      {plainWish.map((wish: any) => (
-        <WishItem {...wish} />
-      ))}
+      <div className="container" ref={wishTemplate as any}>
+        {plainWish.map((wish: any) => (
+          <WishItem {...wish} />
+        ))}
+      </div>
     </div>
   );
 };

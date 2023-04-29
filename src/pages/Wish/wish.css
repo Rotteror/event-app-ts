@@ -1,0 +1,15 @@
+.wish-list {
+  text-align: center;
+}
+
+.button-pdf {
+  margin: 2rem 0;
+  padding: 1rem 3rem;
+  font-size: 1.4rem;
+  background-color: var(--color-grey-8);
+  border-radius: 5rem;
+}
+
+.button-pdf:hover {
+  background-color: var(--color-grey-10);
+}
