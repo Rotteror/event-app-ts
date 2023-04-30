@@ -47,7 +47,7 @@ const Header = () => {
             <Link to="/register">Register</Link>
           </li>
           <li>
-            <Link to="/register" onClick={logoutHandler}>
+            <Link to="/" onClick={logoutHandler}>
               Logout
             </Link>
           </li>

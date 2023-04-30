@@ -2,13 +2,18 @@ import "./register.css";
 
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../store";
+import { createUser } from "../../store/User/userAction";
+import { useAppDispatch } from "../../store";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase-config";
-
 import Input from "../UserAdministration/Input";
 
-import { InputI } from "./Login";
+import { InputI } from "../../models/user-administration";
+import microCopy from "../../constants/microCopy";
+
+const {
+  userAdministration: { rePassword },
+} = microCopy;
 
 const RegisterForm = () => {
   const inputs: InputI[] = [
@@ -70,14 +75,11 @@ const RegisterForm = () => {
       setError(false);
     }
 
-    // TODO REGISTER ACTION: TRY/CATCH BLOCK + ACTIONS
     try {
-      const user =  await createUserWithEmailAndPassword(
-        auth,
-        values.email,
-        values.password
+      await createUserWithEmailAndPassword(auth, values.email, values.password);
+      dispatch(
+        createUser({ email: values.email, purchases: [], wishList: [] })
       );
-
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -106,7 +108,7 @@ const RegisterForm = () => {
               Login
             </Link>{" "}
           </p>
-          {error && <p className="error-register">Passwords does not match</p>}
+          {error && <p className="error-register">{rePassword}</p>}
         </div>
       </form>
     </div>

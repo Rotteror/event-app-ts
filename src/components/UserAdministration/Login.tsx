@@ -1,22 +1,17 @@
 import "./login.css";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../store";
+import { useAppDispatch } from "../../store";
 import Input from "./Input";
-
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase-config";
+import { InputI } from "../../models/user-administration";
 
-export interface InputI {
-  id: number;
-  name: string;
-  type: string;
-  placeholder: string;
-  pattern?: string;
-  errorMessage: string;
-  label: string;
-  required: boolean;
-}
+import microCopy from "../../constants/microCopy";
+
+const {
+  userAdministration: { incorrectLogin },
+} = microCopy;
 
 const LoginForm = () => {
   const inputs: InputI[] = [
@@ -61,7 +56,6 @@ const LoginForm = () => {
 
     try {
       await signInWithEmailAndPassword(auth, values.email, values.password);
-      localStorage.setItem("user", JSON.stringify(auth.currentUser));
       navigate("/");
     } catch (error) {
       setError(true);
@@ -90,7 +84,7 @@ const LoginForm = () => {
               Register
             </Link>{" "}
           </p>
-          {error && <p className="error-login">Incorrect Credentials</p>}
+          {error && <p className="error-login">{incorrectLogin}</p>}
         </div>
       </form>
     </div>

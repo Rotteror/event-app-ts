@@ -1,6 +1,6 @@
 import axios from "axios";
 import { API_KEY, URLS } from "../config";
-import { TicketMasterResponse } from "../models/apiModels";
+import { TicketMasterResponse } from "../models/api-models";
 
 export async function getAllEvents(): Promise<any> {
   const { data } = await axios({
@@ -30,12 +30,3 @@ export async function getEventDetail(id: string): Promise<any> {
   
   return data as any;
 }
-
-// export async function getAllEvents(): Promise<any> {
-//     return (
-//       await axios.request<any>({
-//         method: 'GET',
-//         url: URLS.EVENTS
-//       })
-//     ).data
-// }

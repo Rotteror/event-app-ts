@@ -1,20 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-// import { EventInterface } from "../../models/index";
-// import { Suggested, Attractions, Products, Venue } from "../../models/suggest";
 
-type User = {
-  name: string;
-  gender: string;
-  purchases: [];
-  wishList: WishItem[];
-};
-
-type WishItem = {
-  image: string;
-  text: string;
-  tickets: Number;
-  eventId: string;
-};
+import { User, WishItem } from "../../models/user-administration";
 
 type State = {
   user: User;
@@ -22,8 +8,7 @@ type State = {
 
 const initialState: State = {
   user: {
-    name: "Ivan",
-    gender: "male",
+    email: "",
     purchases: [],
     wishList: [],
   },
@@ -34,12 +19,13 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser(state, action: PayloadAction<User>) {
-      state.user = action.payload;
+      state.user = { ...action.payload };
     },
 
     addWishList(state, action: PayloadAction<WishItem>) {
-        // To DO - check for same wish list items, 
-        // Persist Store - Perhaps ?!?
+      const id = action.payload.eventId;
+      if (state.user.wishList.filter((wishItem) => wishItem.eventId === id))
+        return;
       state.user.wishList.push(action.payload);
     },
   },

@@ -7,7 +7,7 @@ import {
   getSuggestedEvents,
   getEventDetail,
 } from "../../service/eventService";
-import { TicketMasterResponse } from "../../models/apiModels";
+import { TicketMasterResponse } from "../../models/api-models";
 
 export const fetchAllEvents = (): ThunkAction<
   void,

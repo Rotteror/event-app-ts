@@ -1,12 +1,14 @@
 import "./event.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { addWishList } from "../../store/User/userSlice";
+import { addWishItemToDb } from "../../store/User/userAction";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { fetctEventDetail } from "../../store/Event/eventActions";
 import microCopy from "../../constants/microCopy";
 import Loader from "../../components/shared/Loader";
 import { formatDateRange, findDigit } from "../../util";
+import { auth } from "../../firebase-config";
+
 const {
   wish: { replaceText },
 } = microCopy;
@@ -14,7 +16,6 @@ const {
 const Event = () => {
   // Data and properties
   // initial event detail load!
-  // TODO improve this steps!
   // Composobles
   const [quantity, setQuantity] = useState(1);
   const id = useParams().id as string;
@@ -29,14 +30,16 @@ const Event = () => {
 
   //Methods
   const addWishTickets = (item: any) => {
-    //
-    const wishItem = {
-      image: item.images[0]?.url,
-      text: item.placeNote || replaceText,
-      tickets: quantity,
-      eventId: item.id,
-    };
-    dispatch(addWishList(wishItem));
+    if (auth.currentUser) {
+      const wishItem = {
+        image: item.images[0]?.url,
+        text: item.placeNote || replaceText,
+        tickets: quantity,
+        eventId: item.id,
+        userId: auth.currentUser?.uid,
+      };
+      dispatch(addWishItemToDb(wishItem));
+    }
   };
   const purchaseTickets = (quantity: number) => {
     //
