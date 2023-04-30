@@ -1,5 +1,6 @@
 import "./header.css";
 
+import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <header className="site-header">
@@ -9,7 +10,7 @@ const Header = () => {
       <div className="primary">
         <ul className="header-menu">
           <li>
-            <a href="/">Events</a>
+          <Link to="/events">Events</Link>
           </li>
           <li>
             <a href="/wishlist">Gallery</a>
@@ -25,13 +26,13 @@ const Header = () => {
             <a href="/wishlist">Search</a>
           </li>
           <li>
-            <a href="/wishlist">Profile</a>
+            <Link to="/wishlist">Wishlist</Link>
           </li>
           <li>
-            <a href="/wishlist">Login</a>
+            <Link to="/login">Login</Link>
           </li>
           <li>
-            <a href="/wishlist">Cart</a>
+            <Link to="/register">Register</Link>
           </li>
         </ul>
       </div>
