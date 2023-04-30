@@ -6,7 +6,14 @@ type User = {
   name: string;
   gender: string;
   purchases: [];
-  wishList: [];
+  wishList: WishItem[];
+};
+
+type WishItem = {
+  image: string;
+  text: string;
+  tickets: Number;
+  eventId: string;
 };
 
 type State = {
@@ -29,10 +36,11 @@ const userSlice = createSlice({
     setUser(state, action: PayloadAction<User>) {
       state.user = action.payload;
     },
-    addWishList(state, action: PayloadAction<unknown>) {
-      console.log(action.payload);
-    //   state.user.wishList.push(action.payload);
-      //   state.user.wishList.push(action);
+
+    addWishList(state, action: PayloadAction<WishItem>) {
+        // To DO - check for same wish list items, 
+        // Persist Store - Perhaps ?!?
+      state.user.wishList.push(action.payload);
     },
   },
 });
