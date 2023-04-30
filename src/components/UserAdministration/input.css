@@ -4,6 +4,7 @@
   padding: 1.3rem 2rem;
   border: 1px solid #555;
   border-radius: 7px;
+  text-transform: lowercase;
 }
 
 .label-field {

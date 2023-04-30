@@ -3,10 +3,12 @@ import "./register.css";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase-config";
 
 import Input from "../UserAdministration/Input";
 
-import {InputI} from "./Login";
+import { InputI } from "./Login";
 
 const RegisterForm = () => {
   const inputs: InputI[] = [
@@ -58,7 +60,7 @@ const RegisterForm = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  const handleLogin = (e: any) => {
+  const handleRegister = async (e: any) => {
     e.preventDefault();
 
     if (values.password !== values.repeatPassword) {
@@ -69,11 +71,22 @@ const RegisterForm = () => {
     }
 
     // TODO REGISTER ACTION: TRY/CATCH BLOCK + ACTIONS
+    try {
+      const user =  await createUserWithEmailAndPassword(
+        auth,
+        values.email,
+        values.password
+      );
+
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div className="register">
-      <form className="form-one" onSubmit={handleLogin}>
+      <form className="form-one" onSubmit={handleRegister}>
         {inputs.map((input) => (
           <Input
             key={input.id}

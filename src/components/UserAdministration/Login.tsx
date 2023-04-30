@@ -4,6 +4,9 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store";
 import Input from "./Input";
 
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase-config";
+
 export interface InputI {
   id: number;
   name: string;
@@ -53,10 +56,16 @@ const LoginForm = () => {
     setValues({ ...values, [event.target.name]: event.target.value });
   };
 
-  const handleLogin = (event: any) => {
+  const handleLogin = async (event: any) => {
     event.preventDefault();
 
-    // LOGIN USER ACTIONS
+    try {
+      await signInWithEmailAndPassword(auth, values.email, values.password);
+      localStorage.setItem("user", JSON.stringify(auth.currentUser));
+      navigate("/");
+    } catch (error) {
+      setError(true);
+    }
   };
 
   return (

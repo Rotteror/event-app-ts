@@ -1,7 +1,19 @@
 import "./header.css";
+import { useNavigate, Link } from "react-router-dom";
 
-import { Link } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase-config";
+
 const Header = () => {
+  const navigate = useNavigate();
+
+  const logoutHandler = async (e: any) => {
+    e.preventDefault();
+
+    await signOut(auth);
+    navigate("/");
+  };
+
   return (
     <header className="site-header">
       <div className="logo-area primary-heading">
@@ -10,7 +22,7 @@ const Header = () => {
       <div className="primary">
         <ul className="header-menu">
           <li>
-          <Link to="/events">Events</Link>
+            <Link to="/events">Events</Link>
           </li>
           <li>
             <a href="/wishlist">Gallery</a>
@@ -33,6 +45,11 @@ const Header = () => {
           </li>
           <li>
             <Link to="/register">Register</Link>
+          </li>
+          <li>
+            <Link to="/register" onClick={logoutHandler}>
+              Logout
+            </Link>
           </li>
         </ul>
       </div>
