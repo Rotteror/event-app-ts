@@ -27,12 +27,12 @@ const HeroSection = (attraction: Attractions) => {
         >
           <h6>Data: TBD</h6>
           <h4>
-            <span>{attraction.name}</span>
+            <p className="p-content">{attraction.name}</p>
             <br />
-            <span>{attraction.type}</span>
+            <p className="p-content">{attraction.type}</p>
           </h4>
           <div className="event-content">
-            <p>Some Text Must be added here.......</p>
+            <p className="p-content">Some Text Must be added here.......</p>
           </div>
         </div>
       </a>

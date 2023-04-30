@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-
+import { useEffect } from "react";
 import { useAppDispatch } from "./store";
-import { fetchAllEvents } from "./store/Event/eventActions";
+import { fetchAllEvents, fetchSuggestedEvenets } from "./store/Event/eventActions";
 
 import { Event, Login, Register, Home, NotFound, Wish } from "./pages";
 
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
-      
+
       // Event Detail Page
       {
         path: "/event/:id",
@@ -56,7 +56,10 @@ const router = createBrowserRouter([
 function App() {
   // fetch all events onload
   const dispatch = useAppDispatch();
-  dispatch(fetchAllEvents());
+  useEffect(() => {
+    dispatch(fetchAllEvents());
+    dispatch(fetchSuggestedEvenets());
+  }, []);
 
   return (
     <div className="App">
