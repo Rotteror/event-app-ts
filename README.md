@@ -1,15 +1,49 @@
-# Getting Started with Create React App
+# Event Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+Book tracking app built with React.
 
-## Available Scripts
 
-In the project directory, you can run:
+You can use `test@example.com` and password `123456` to look around or just create your own account.
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+In order to setup and work on this project on your own, you will need to:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. Clone this project:  
+   `git clone https://github.com/Rotteror/event-app-ts.git`
+
+2. Once you have cloned this project, you can install the required dependencies by using:  
+   `npm install`
+
+3. A live demo of the project can be started by using:  
+   `npm start`
+
+
+## Features
+
+- **Login/Register** page.
+- **Dynamically loaded** events and profile(home) page.
+- **Searching** events by category, location or specific keyword.
+- **Wishlist** ability to add event to wish list.
+- **Ability to add events** to your own wishlist.
+- **Ability to download** wihslist events as PDF.
+- **Ability to create** your own event.
+
+## Outcome
+
+- Deepened knowledge of using **useEffect** hook.
+- Learned how to work with multiple **redux-toolkit** and **redux-persist**.
+- Used TypeScript **v4.9**
+- Used **react-router v6**.
+- Used **Firebase Auth and Cloud Firestore** services for authentication and backend.
+- **Protected routes**.
+- Used custom CSS styles.
+- Tried to keep project structure clean and easy to understand.
+- Deepened knowledge of using third party libraries.
+- Learned a lot about **React**
+- Overall, I have improved my React knowledge A LOT!
+
+## Screenshots
+
+![Screenshot](image.png)
+![Screenshot](image.png)
