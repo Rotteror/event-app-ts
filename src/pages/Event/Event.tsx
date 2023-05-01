@@ -55,58 +55,78 @@ const Event = () => {
       </div>
     );
 
-  // Regarding the lack of API each event will mapped 
+  // Due the lack of API each event will mapped to specific type ... :@ :/
+  const mappedEvent = {
+    name: currentEvent.name,
+    images: currentEvent.images[0]?.url,
+    startDate: formatDateRange(currentEvent.dates.start.localDate),
+    localTime: currentEvent.dates.start.localTime,
+    statusCode: currentEvent.dates.status.code.toUpperCase(),
+    segmentName: currentEvent.classifications[0]?.segment.name,
+    genreName: currentEvent.classifications[0]?.genre.name,
+    promoterName: currentEvent.promoter.name,
+    legalAgeRestriction: currentEvent.ageRestrictions?.legalAgeEnforced
+      ? "Yes"
+      : "No",
+    ticketLimit: currentEvent.ticketLimit?.info
+      ? findDigit(currentEvent.ticketLimit.info)
+      : 2,
+    seatmap:
+      currentEvent.seatmap?.staticUrl ||
+      "https://maps.ticketmaster.com/maps/geometry/3/event/19005E6EC7A83C0C/staticImage?type=png&systemId=HOST",
+    priceRangeMin: "25.00",
+    priceRangeMax: "55.00",
+  };
 
-  let ticketLimit: Number = findDigit(currentEvent.ticketLimit.info);
+  // let ticketLimit: Number = findDigit(currentEvent.ticketLimit.info);
 
   return (
     <div>
       <div className="container">
-        <h1 className="title">{currentEvent.name}</h1>
+        <h1 className="title">{mappedEvent.name}</h1>
         <div className="grid grid--2-cols detail">
           <div className="info-section">
             <div className="img-container">
-              <img src={currentEvent.images[0]?.url} alt="" />
+              <img src={mappedEvent.images} alt="" />
             </div>
             <div className="dates">
-              <h4>{formatDateRange(currentEvent.dates.start.localDate)}</h4>
-              <p className="content-p">{currentEvent.dates.start.localTime}</p>
+              <h4>{formatDateRange(mappedEvent.startDate)}</h4>
+              <p className="content-p">{mappedEvent.localTime}</p>
               <p className="content-p">
-                <strong>{currentEvent.dates.status.code.toUpperCase()}</strong>
+                <strong>{mappedEvent.statusCode}</strong>
               </p>
             </div>
             <div className="type">
               <h6>
-                {currentEvent.classifications[0]?.segment.name} /
-                {" " + currentEvent.classifications[0]?.genre.name}
+                {mappedEvent.segmentName} /{" " + mappedEvent.genreName}
               </h6>
               <p className="content-p">
                 <strong>Promooted By: </strong>
-                {currentEvent.promoter.name}
+                {mappedEvent.promoterName}
               </p>
               <p className="content-p">
                 <strong>Age Restrictions: </strong>
-                {currentEvent.ageRestrictions.legalAgeEnforced ? "Yes" : "No"}
+                {mappedEvent.legalAgeRestriction}
               </p>
               <p className="content-p">
                 <strong>Ticket Limit:</strong>
-                {currentEvent.ticketLimit.info}
+                {"" + mappedEvent.ticketLimit}
               </p>
             </div>
           </div>
           <div className="action-section">
             <div className="img-staticUrl">
-              <img src={currentEvent.seatmap.staticUrl} alt="" />
+              <img src={mappedEvent.seatmap} alt="" />
             </div>
             <div className="price-range">
               <p className="content-p">
-                <strong>Min:</strong> {currentEvent.priceRanges[0]?.min} USD
+                <strong>Min:</strong> {mappedEvent.priceRangeMin} USD
               </p>
               <p className="content-p">
-                <strong>Max:</strong> {currentEvent.priceRanges[0]?.max} USD
+                <strong>Max:</strong> {mappedEvent.priceRangeMax} USD
               </p>
               <p className="content-p note">
-                {currentEvent?.pleaseNote || null}
+                {currentEvent?.pleaseNote || "N/A"}
               </p>
             </div>
             <div className="quantity">
@@ -121,7 +141,9 @@ const Event = () => {
               <button
                 onClick={() =>
                   setQuantity((prev: any) =>
-                    prev === ticketLimit ? ticketLimit : prev + 1
+                    prev === mappedEvent.ticketLimit
+                      ? mappedEvent.ticketLimit
+                      : prev + 1
                   )
                 }
               >
