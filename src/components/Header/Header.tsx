@@ -3,9 +3,12 @@ import { useNavigate, Link } from "react-router-dom";
 
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase-config";
+import { useAppSelector } from "../../store";
 
 const Header = () => {
   const navigate = useNavigate();
+  const isLoggedIn = auth.currentUser?.uid;
+  const isAuth = useAppSelector((state) => state.user.user);
 
   const logoutHandler = async (e: any) => {
     e.preventDefault();
@@ -34,23 +37,29 @@ const Header = () => {
       </div>
       <div className="secondary">
         <ul className="header-menu">
-          <li>
-            <a href="/wishlist">Search</a>
-          </li>
-          <li>
-            <Link to="/wishlist">Wishlist</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
-          <li>
-            <Link to="/" onClick={logoutHandler}>
-              Logout
-            </Link>
-          </li>
+          {isLoggedIn && (
+            <>
+              <li>Welcome {isAuth.email}</li>
+              <li>
+                <Link to="/wishlist">Wishlist</Link>
+              </li>
+              <li>
+                <Link to="/" onClick={logoutHandler}>
+                  Logout
+                </Link>
+              </li>
+            </>
+          )}
+          {!isLoggedIn && (
+            <>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/register">Register</Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </header>

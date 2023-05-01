@@ -1,7 +1,10 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import { useAppDispatch } from "./store";
-import { fetchAllEvents, fetchSuggestedEvenets } from "./store/Event/eventActions";
+import {
+  fetchAllEvents,
+  fetchSuggestedEvenets,
+} from "./store/Event/eventActions";
 
 import { Event, Login, Register, Home, NotFound, Wish } from "./pages";
 
@@ -52,6 +55,8 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
+// TODO Private Routes !!!
 
 function App() {
   // fetch all events onload

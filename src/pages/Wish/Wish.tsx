@@ -12,7 +12,7 @@ const Wish = () => {
 
   useEffect(() => {
     if (auth.currentUser?.uid) dispatch(fetchUser(auth.currentUser?.uid));
-  }, [auth.currentUser?.uid]);
+  }, []);
 
   const currentWishList = useAppSelector((state) => state.user.user.wishlist);
 
