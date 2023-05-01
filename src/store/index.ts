@@ -1,13 +1,40 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import {
+  persistReducer,
+  persistStore,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
+
 import eventReducer from "./Event/eventSlice";
 import userReducer from "./User/userSlice";
 
+const persistConfig = {
+  key: "root",
+  version: 1,
+  storage,
+};
+
+const persistedEventReducer = persistReducer(persistConfig, eventReducer);
+const persistedUserReducer = persistReducer(persistConfig, userReducer);
+
 export const store = configureStore({
   reducer: {
-    event: eventReducer,
-    user: userReducer,
+    event: persistedEventReducer,
+    user: persistedUserReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export type AppDispatch = typeof store.dispatch;

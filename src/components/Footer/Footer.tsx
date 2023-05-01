@@ -16,16 +16,16 @@ const Footer = () => {
           <div className="menu-content">
             <ul className="footer-list-menu">
               <li className="footer-menu-item">
-                <a href="void(0)">Events</a>
+                <a href="javascript:void(0)">Events</a>
               </li>
               <li className="footer-menu-item">
-                <a href="void(0)">Gallery</a>
+                <a href="javascript:void(0)">Gallery</a>
               </li>
               <li className="footer-menu-item">
-                <a href="void(0)">About</a>
+                <a href="javascript:void(0)">About</a>
               </li>
               <li className="footer-menu-item">
-                <a href="void(0)">Careers</a>
+                <a href="javascript:void(0)">Careers</a>
               </li>
             </ul>
           </div>
@@ -39,16 +39,16 @@ const Footer = () => {
           <div className="menu-content">
             <ul className="footer-list-menu">
               <li className="footer-menu-item">
-                <a href="void(0)">Events</a>
+                <a href="javascript:void(0)">Events</a>
               </li>
               <li className="footer-menu-item">
-                <a href="void(0)">Gallery</a>
+                <a href="javascript:void(0)">Gallery</a>
               </li>
               <li className="footer-menu-item">
-                <a href="void(0)">About</a>
+                <a href="javascript:void(0)">About</a>
               </li>
               <li className="footer-menu-item">
-                <a href="void(0)">Careers</a>
+                <a href="javascript:void(0)">Careers</a>
               </li>
             </ul>
           </div>
@@ -62,16 +62,16 @@ const Footer = () => {
           <div className="menu-content">
             <ul className="footer-list-menu">
               <li className="footer-menu-item">
-                <a href="void(0)">Events</a>
+                <a href="javascript:void(0)">Events</a>
               </li>
               <li className="footer-menu-item">
-                <a href="void(0)">Gallery</a>
+                <a href="javascript:void(0)">Gallery</a>
               </li>
               <li className="footer-menu-item">
-                <a href="void(0)">About</a>
+                <a href="javascript:void(0)">About</a>
               </li>
               <li className="footer-menu-item">
-                <a href="void(0)">Careers</a>
+                <a href="javascript:void(0)">Careers</a>
               </li>
             </ul>
           </div>

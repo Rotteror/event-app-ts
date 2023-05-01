@@ -18,18 +18,22 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUser(state, action: PayloadAction<User>) {
-      state.user = { ...state.user, ...action.payload };
-    },
-
     addWishList(state, action: PayloadAction<WishItem>) {
       const id = action.payload.eventId;
       if (state.user.wishlist.filter((wishItem) => wishItem.eventId === id))
         return;
       state.user.wishlist.push(action.payload);
     },
+
+    logoutUser(state) {
+      state.user = { email: "", purchases: [], wishlist: [] };
+    },
+
+    setUser(state, action: PayloadAction<User>) {
+      state.user = { ...state.user, ...action.payload };
+    },
   },
 });
 
-export const { setUser, addWishList } = userSlice.actions;
+export const { setUser, addWishList, logoutUser } = userSlice.actions;
 export default userSlice.reducer;

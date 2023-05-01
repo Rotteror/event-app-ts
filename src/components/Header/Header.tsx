@@ -3,9 +3,11 @@ import { useNavigate, Link } from "react-router-dom";
 
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase-config";
-import { useAppSelector } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../store";
+import { logoutUser } from "../../store/User/userSlice";
 
 const Header = () => {
+  const dispatch = useAppDispatch()
   const navigate = useNavigate();
   const isLoggedIn = auth.currentUser?.uid;
   const isAuth = useAppSelector((state) => state.user.user);
@@ -14,24 +16,21 @@ const Header = () => {
     e.preventDefault();
 
     await signOut(auth);
+
+    dispatch(logoutUser())
+
     navigate("/");
   };
 
   return (
     <header className="site-header">
       <div className="logo-area primary-heading">
-        <a href="/">Web Event App</a>
+      <Link to="/">Event Web App</Link>
       </div>
       <div className="primary">
         <ul className="header-menu">
           <li>
             <Link to="/events">Events</Link>
-          </li>
-          <li>
-            <a href="/wishlist">Gallery</a>
-          </li>
-          <li>
-            <a href="/wishlist">Create Event</a>
           </li>
         </ul>
       </div>
