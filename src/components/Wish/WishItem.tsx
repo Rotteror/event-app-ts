@@ -1,7 +1,9 @@
 import "./wishitem.css";
 import { useNavigate } from "react-router-dom";
 
-const WishItem = ({ image, text, tickets, eventId }: any) => {
+import { WishItem as Item } from "../../models/user-administration";
+
+const WishItem = ({ image, text, tickets, eventId }: Item) => {
   const navigate = useNavigate();
   const navigateToDetails = (id: string) => {
     navigate(`/event/${id}`);
@@ -15,7 +17,7 @@ const WishItem = ({ image, text, tickets, eventId }: any) => {
       <div className="cta-info">
         <p className="tickets">
           <strong>Quantity:</strong>
-          <label>{tickets}</label>
+          <label>{"" + tickets}</label>
         </p>
         <button className="cta" onClick={() => navigateToDetails(eventId)}>
           Details

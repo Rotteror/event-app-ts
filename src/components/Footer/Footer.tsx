@@ -4,6 +4,8 @@ import "./footer.css";
 // 3  - &#9313;
 // 4  - &#9314;
 
+// Comments all <a> tags causing errors: state reactivity, infinity loops, etc
+
 const Footer = () => {
   return (
     <div className="footer">

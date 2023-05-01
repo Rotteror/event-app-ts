@@ -1,13 +1,14 @@
 import "./register.css";
-
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+
 import { createUser } from "../../store/User/userAction";
 import { useAppDispatch } from "../../store";
+
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase-config";
-import Input from "../UserAdministration/Input";
 
+import Input from "../UserAdministration/Input";
 import { InputI } from "../../models/user-administration";
 import microCopy from "../../constants/microCopy";
 

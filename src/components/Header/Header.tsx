@@ -5,12 +5,14 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../firebase-config";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { logoutUser } from "../../store/User/userSlice";
+import { User } from "../../models/user-administration";
 
 const Header = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const isLoggedIn = auth.currentUser?.uid;
-  const isAuth = useAppSelector((state) => state.user.user);
+  
+  const currentUser: User = useAppSelector((state) => state.user.user);
+  const isAuth: boolean = currentUser.email !== "";
 
   const logoutHandler = async (e: any) => {
     e.preventDefault();
@@ -36,9 +38,9 @@ const Header = () => {
       </div>
       <div className="secondary">
         <ul className="header-menu">
-          {isLoggedIn && (
+          {isAuth && (
             <>
-              <li>Welcome {isAuth.email}</li>
+              <li>Welcome {currentUser.email}</li>
               <li>
                 <Link to="/wishlist">Wishlist</Link>
               </li>
@@ -49,7 +51,7 @@ const Header = () => {
               </li>
             </>
           )}
-          {!isLoggedIn && (
+          {!isAuth && (
             <>
               <li>
                 <Link to="/login">Login</Link>

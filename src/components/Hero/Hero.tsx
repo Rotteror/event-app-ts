@@ -1,6 +1,6 @@
 import "./hero.css";
 import { useAppSelector } from "../../store";
-import { Attractions } from "../../models";
+
 import HeroSection from "./HeroSection";
 import Loader from "../../components/shared/Loader";
 

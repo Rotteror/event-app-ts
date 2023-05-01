@@ -1,14 +1,16 @@
 import "./login.css";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+
 import { useAppDispatch } from "../../store";
-import Input from "./Input";
+import { fetchUser } from "../../store/User/userAction";
+
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase-config";
-import { InputI } from "../../models/user-administration";
 
+import Input from "./Input";
 import microCopy from "../../constants/microCopy";
-import { fetchUser } from "../../store/User/userAction";
+import { InputI } from "../../models/user-administration";
 
 const {
   auth: { incorrectLogin },

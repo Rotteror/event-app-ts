@@ -32,7 +32,11 @@ const HeroSection = (attraction: Attractions) => {
             <p className="p-content">{attraction.type}</p>
           </h4>
           <div className="event-content">
-            <p className="p-content">Some Text Must be added here.......</p>
+            <p className="p-content">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Asperiores facilis numquam nisi non reiciendis ullam consectetur
+              architecto eos quos aperiam.
+            </p>
           </div>
         </div>
       </a>
