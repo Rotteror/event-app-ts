@@ -21,27 +21,29 @@ const Search = () => {
   };
 
   return (
-    <div className="search">
-      <form className="search-form" onSubmit={handleSearch}>
-        <input
-          className="search-input"
-          placeholder="Search by category or name"
-          onChange={(e) => setKeyword(e.target.value)}
-        />
-        <CustomSelect
-          value={category}
-          onChange={setCategory}
-          options={categoryOptions}
-        />
-        <CustomSelect
-          value={keyword}
-          onChange={setKeyword}
-          options={keywordOptions}
-        />
-        <button type="submit" className="search-cta">
-          &#10148;
-        </button>
-      </form>
+    <div className="container">
+      <div className="search">
+        <form className="search-form" onSubmit={handleSearch}>
+          <input
+            className="search-input"
+            placeholder="Search by category or name"
+            onChange={(e) => setKeyword(e.target.value)}
+          />
+          <CustomSelect
+            value={category}
+            onChange={setCategory}
+            options={categoryOptions}
+          />
+          <CustomSelect
+            value={keyword}
+            onChange={setKeyword}
+            options={keywordOptions}
+          />
+          <button type="submit" className="search-cta">
+            Search
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

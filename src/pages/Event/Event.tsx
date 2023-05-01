@@ -55,6 +55,8 @@ const Event = () => {
       </div>
     );
 
+  // Regarding the lack of API each event will mapped 
+
   let ticketLimit: Number = findDigit(currentEvent.ticketLimit.info);
 
   return (
