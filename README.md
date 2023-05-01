@@ -44,4 +44,7 @@ In order to setup and work on this project on your own, you will need to:
 - Overall, I have improved my React knowledge A LOT!
 
 ## Screenshots
-<img src="https://i.imgur.com/a/JTSODF8" width="900">
+
+![event-app](https://user-images.githubusercontent.com/82669922/235481308-1b535a79-50b6-42dd-9884-d817da569e26.jpg)
+![wishlist](https://user-images.githubusercontent.com/82669922/235481389-d392cea0-5ef5-4843-a31a-c2953b6597be.jpg)
+![categories](https://user-images.githubusercontent.com/82669922/235481428-51c552ae-9654-482a-b187-92a2724238f2.jpg)
