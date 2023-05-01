@@ -10,7 +10,7 @@ const Header = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const isLoggedIn = auth.currentUser?.uid;
-  const isAuth = useAppSelector((state) => state.rootReducer.user.user);
+  const isAuth = useAppSelector((state) => state.user.user);
 
   const logoutHandler = async (e: any) => {
     e.preventDefault();
