@@ -25,7 +25,6 @@ const persistConfig = {
 const persistedEventReducer = persistReducer(persistConfig, eventReducer);
 const persistedUserReducer = persistReducer(persistConfig, userReducer);
 
-
 export const store = configureStore({
   reducer: {
     event: persistedEventReducer,

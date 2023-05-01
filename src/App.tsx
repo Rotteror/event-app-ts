@@ -9,14 +9,12 @@ import {
 import { Event, Login, Register, Home, NotFound, Wish } from "./pages";
 
 import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
 
 const Layout = () => {
   return (
     <div className="App">
       <Header />
       <Outlet />
-      <Footer />
     </div>
   );
 };
