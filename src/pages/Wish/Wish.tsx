@@ -43,7 +43,7 @@ const Wish = () => {
       </button>
       <div className="container" ref={wishTemplate as any}>
         {currentWishList.map((wish: any) => (
-          <WishItem {...wish} />
+          <WishItem {...wish} key={wish.eventId} />
         ))}
       </div>
     </div>

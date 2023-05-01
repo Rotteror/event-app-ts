@@ -24,6 +24,7 @@ const persistConfig = {
 const persistedEventReducer = persistReducer(persistConfig, eventReducer);
 const persistedUserReducer = persistReducer(persistConfig, userReducer);
 
+
 export const store = configureStore({
   reducer: {
     event: persistedEventReducer,
@@ -49,3 +50,4 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 // Use throughout your app instead of plain `useDispatch` and `useSelector`
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+export let persistor = persistStore(store);

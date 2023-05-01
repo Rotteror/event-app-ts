@@ -7,17 +7,17 @@ import { useAppDispatch, useAppSelector } from "../../store";
 import { logoutUser } from "../../store/User/userSlice";
 
 const Header = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const isLoggedIn = auth.currentUser?.uid;
-  const isAuth = useAppSelector((state) => state.user.user);
+  const isAuth = useAppSelector((state) => state.rootReducer.user.user);
 
   const logoutHandler = async (e: any) => {
     e.preventDefault();
 
     await signOut(auth);
 
-    dispatch(logoutUser())
+    dispatch(logoutUser());
 
     navigate("/");
   };
@@ -25,7 +25,7 @@ const Header = () => {
   return (
     <header className="site-header">
       <div className="logo-area primary-heading">
-      <Link to="/">Event Web App</Link>
+        <Link to="/">Event Web App</Link>
       </div>
       <div className="primary">
         <ul className="header-menu">
