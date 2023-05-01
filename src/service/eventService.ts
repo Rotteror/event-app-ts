@@ -22,11 +22,25 @@ export async function getSuggestedEvents(): Promise<any> {
 }
 
 export async function getEventDetail(id: string): Promise<any> {
-
   const { data } = await axios({
     method: "GET",
     url: `${URLS.DETAIL}${id}.json${API_KEY}`,
   });
-  
+
+  return data as any;
+}
+export async function fetchSearchedEvents(
+  keyword: string = "",
+  category: string = ""
+): Promise<any> {
+  const { data } = await axios({
+    method: "GET",
+    url: URLS.EVENTS,
+    params: {
+      keyword: keyword,
+      segmenName: category === "Others" ? "Miscellaneous" : category,
+    },
+  });
+
   return data as any;
 }

@@ -39,6 +39,7 @@ const Event = () => {
         userId: auth.currentUser?.uid,
       };
       dispatch(addWishItemToDb(wishItem));
+      setQuantity(1);
     }
   };
   const purchaseTickets = (quantity: number) => {

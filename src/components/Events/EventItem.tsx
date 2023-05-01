@@ -19,8 +19,8 @@ const EventItem = (props: EventInterface) => {
         </h3>
       </div>
       <div className="event-content">
-        <p>{props.promoter.name}</p>
-        <p>{props.promoter.description}</p>
+        <p>{props.promoter?.name}</p>
+        <p>{props.promoter?.description}</p>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ const Footer = () => {
             <span>Links</span>
           </h6>
           <div className="menu-content">
-            <ul className="footer-list-menu">
+            {/* <ul className="footer-list-menu">
               <li className="footer-menu-item">
                 <a href="javascript:void(0)">Events</a>
               </li>
@@ -27,7 +27,7 @@ const Footer = () => {
               <li className="footer-menu-item">
                 <a href="javascript:void(0)">Careers</a>
               </li>
-            </ul>
+            </ul> */}
           </div>
         </div>
         {/* section 2 */}
@@ -37,7 +37,7 @@ const Footer = () => {
             <span>Follow</span>
           </h6>
           <div className="menu-content">
-            <ul className="footer-list-menu">
+            {/* <ul className="footer-list-menu">
               <li className="footer-menu-item">
                 <a href="javascript:void(0)">Events</a>
               </li>
@@ -50,7 +50,7 @@ const Footer = () => {
               <li className="footer-menu-item">
                 <a href="javascript:void(0)">Careers</a>
               </li>
-            </ul>
+            </ul> */}
           </div>
         </div>
         {/* section 3 */}
@@ -61,7 +61,7 @@ const Footer = () => {
           </h6>
           <div className="menu-content">
             <ul className="footer-list-menu">
-              <li className="footer-menu-item">
+              {/* <li className="footer-menu-item">
                 <a href="javascript:void(0)">Events</a>
               </li>
               <li className="footer-menu-item">
@@ -72,7 +72,7 @@ const Footer = () => {
               </li>
               <li className="footer-menu-item">
                 <a href="javascript:void(0)">Careers</a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
