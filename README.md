@@ -44,6 +44,4 @@ In order to setup and work on this project on your own, you will need to:
 - Overall, I have improved my React knowledge A LOT!
 
 ## Screenshots
-
-![Screenshot](image.png)
-![Screenshot](image.png)
+<img src="https://i.imgur.com/a/JTSODF8" width="900">
