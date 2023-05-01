@@ -8,9 +8,10 @@ import { auth } from "../../firebase-config";
 import { InputI } from "../../models/user-administration";
 
 import microCopy from "../../constants/microCopy";
+import { fetchUser } from "../../store/User/userAction";
 
 const {
-  userAdministration: { incorrectLogin },
+  auth: { incorrectLogin },
 } = microCopy;
 
 const LoginForm = () => {
@@ -56,6 +57,7 @@ const LoginForm = () => {
 
     try {
       await signInWithEmailAndPassword(auth, values.email, values.password);
+      if (auth.currentUser) dispatch(fetchUser(auth.currentUser?.uid));
       navigate("/");
     } catch (error) {
       setError(true);

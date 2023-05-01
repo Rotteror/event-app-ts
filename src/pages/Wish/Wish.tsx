@@ -1,23 +1,20 @@
 import "./wish.css";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import jsPDF from "jspdf";
-import { useRef } from "react";
-import { useAppDispatch, useAppSelector } from "../../store";
+import { useRef, useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../store/index";
 import WishItem from "../../components/Wish/WishItem";
+import { auth } from "../../firebase-config";
+import { fetchUser } from "../../store/User/userAction";
+
 const Wish = () => {
   const wishTemplate = useRef("");
-  const currentWishList = useAppSelector(({ event }) => event.events[0]);
+  const dispatch = useAppDispatch();
 
-  const plainWish: any = [
-    {
-      image:
-        "https://s1.ticketm.net/dam/a/c62/0636ff21-e369-4b8c-bee4-214ea0a81c62_1339761_CUSTOM.jpg",
-      text: `Footprint Center is now a cashless environment. Please plan on using Visa, Mastercard, American Express or Discover during your visit. Don't have a credit/debit card? Convert cash into a preloaded Mastercard by visiting one of our reverse ATMs located near the Ticket Office or Section 218! When you purchase a ticket to a Footprint Center even`,
-      tickets: 8,
-      eventId: "G5v0Z9JD6ndYG",
-    },
-  ];
+  useEffect(() => {
+    if (auth.currentUser?.uid) dispatch(fetchUser(auth.currentUser?.uid));
+  }, [auth.currentUser?.uid]);
+
+  const currentWishList = useAppSelector((state) => state.user.user.wishlist);
 
   const handleGeneratePdf = async () => {
     const pdf = new jsPDF({
@@ -33,10 +30,10 @@ const Wish = () => {
     await pdf.html(wishTemplate.current, {
       width: 580,
       windowWidth: 880,
-      margin: 15,
+      margin: 0,
       filename: `my-wishlist`,
     });
-    pdf.save();
+    await pdf.save();
   };
 
   return (
@@ -45,7 +42,7 @@ const Wish = () => {
         Download as PDF
       </button>
       <div className="container" ref={wishTemplate as any}>
-        {plainWish.map((wish: any) => (
+        {currentWishList.map((wish: any) => (
           <WishItem {...wish} />
         ))}
       </div>

@@ -10,7 +10,7 @@ const initialState: State = {
   user: {
     email: "",
     purchases: [],
-    wishList: [],
+    wishlist: [],
   },
 };
 
@@ -19,14 +19,14 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser(state, action: PayloadAction<User>) {
-      state.user = { ...action.payload };
+      state.user = { ...state.user, ...action.payload };
     },
 
     addWishList(state, action: PayloadAction<WishItem>) {
       const id = action.payload.eventId;
-      if (state.user.wishList.filter((wishItem) => wishItem.eventId === id))
+      if (state.user.wishlist.filter((wishItem) => wishItem.eventId === id))
         return;
-      state.user.wishList.push(action.payload);
+      state.user.wishlist.push(action.payload);
     },
   },
 });

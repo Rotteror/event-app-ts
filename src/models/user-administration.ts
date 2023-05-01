@@ -12,7 +12,7 @@ export interface InputI {
 export type User = {
   email: string;
   purchases: string[];
-  wishList: WishItem[];
+  wishlist: WishItem[];
 };
 
 export type WishItem = {

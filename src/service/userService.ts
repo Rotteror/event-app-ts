@@ -1,5 +1,5 @@
 import { db, auth } from "../firebase-config";
-import { doc, updateDoc, arrayUnion, setDoc } from "firebase/firestore";
+import { doc, updateDoc, getDoc, arrayUnion, setDoc } from "firebase/firestore";
 
 import { WishItem, User } from "../models/user-administration";
 
@@ -17,4 +17,14 @@ export async function createUserDb(data: User) {
       purchases: [],
       wishlist: [],
     });
+}
+
+export async function getUser(userId: string): Promise<User | null> {
+  const docRef = doc(db, "users", userId);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) return docSnap.data() as User;
+
+  return null;
+  //TODO HANDLE ERROR
 }

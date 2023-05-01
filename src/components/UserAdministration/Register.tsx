@@ -12,7 +12,7 @@ import { InputI } from "../../models/user-administration";
 import microCopy from "../../constants/microCopy";
 
 const {
-  userAdministration: { rePassword },
+  auth: { rePassword },
 } = microCopy;
 
 const RegisterForm = () => {
@@ -78,7 +78,7 @@ const RegisterForm = () => {
     try {
       await createUserWithEmailAndPassword(auth, values.email, values.password);
       dispatch(
-        createUser({ email: values.email, purchases: [], wishList: [] })
+        createUser({ email: values.email, purchases: [], wishlist: [] })
       );
       navigate("/");
     } catch (error) {

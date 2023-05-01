@@ -20,7 +20,7 @@ const InputLogin = (props: any) => {
         onFocus={() => inputProps.name === "repeatPassword" && setFocused(true)}
         focused={focused.toString()}
       />
-      <span>{errorMessage}</span>
+      <span className="error-message">{errorMessage}</span>
     </div>
   );
 };
