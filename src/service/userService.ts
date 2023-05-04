@@ -10,6 +10,20 @@ export async function addEventToWishList(data: WishItem) {
   });
 }
 
+export async function addEventToBoughtList(data: WishItem) {
+  const userRef = doc(db, "users", data.userId);
+  await updateDoc(userRef, {
+    purchases: arrayUnion(data),
+  });
+}
+
+export async function clearBoughtList(userId: string) {
+  const userRef = doc(db, "users", userId);
+  await updateDoc(userRef, {
+    purchases: [],
+  });
+}
+
 export async function createUserDb(data: User) {
   if (auth.currentUser)
     await setDoc(doc(db, "users", auth.currentUser.uid), {

@@ -22,6 +22,14 @@ const userSlice = createSlice({
       state.user.wishlist.push(action.payload);
     },
 
+    addBoughtItem(state, action: PayloadAction<WishItem>) {
+      state.user.purchases.push(action.payload);
+    },
+
+    clearCart(state) {
+      state.user.purchases = [];
+    },
+
     logoutUser(state) {
       state.user = { email: "", purchases: [], wishlist: [] };
     },
@@ -32,5 +40,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { setUser, addWishList, logoutUser } = userSlice.actions;
+export const { setUser, addBoughtItem, addWishList, clearCart, logoutUser } =
+  userSlice.actions;
 export default userSlice.reducer;

@@ -11,7 +11,7 @@ export interface InputI {
 
 export type User = {
   email: string;
-  purchases: string[];
+  purchases: WishItem[];
   wishlist: WishItem[];
 };
 

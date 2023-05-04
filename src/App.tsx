@@ -1,7 +1,10 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./store";
-import { fetchAllEvents, fetchSuggestedEvenets } from "./store/Event/eventActions";
+import {
+  fetchAllEvents,
+  fetchSuggestedEvenets,
+} from "./store/Event/eventActions";
 import { EventInterface } from "./models/index";
 
 import { Event, Login, Register, Home, NotFound, Wish, Cart } from "./pages";
@@ -10,14 +13,18 @@ import Header from "./components/Header/Header";
 
 const Layout = () => {
   const loadingState: string = useAppSelector((state) => state.event.status);
-  const events: EventInterface[] = useAppSelector((state) => state.event.events);
+  const events: EventInterface[] = useAppSelector(
+    (state) => state.event.events
+  );
 
   return (
     <div className="App">
       <Header />
       {loadingState === "success" && <Outlet />}
       {loadingState === "loading" && <Loader />}
-      {loadingState === "failed" && !events.length && <div>Something went wrong please try again</div>}
+      {(loadingState === "failed" || events.length === 0) && (
+        <div>Something went wrong. Please try again</div>
+      )}
     </div>
   );
 };

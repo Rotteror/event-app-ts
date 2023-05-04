@@ -1,7 +1,10 @@
 import "./event.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { addWishItemToDb } from "../../store/User/userAction";
+import {
+  addWishItemToDb,
+  addBoughtItemToDb,
+} from "../../store/User/userAction";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { fetctEventDetail } from "../../store/Event/eventActions";
 import microCopy from "../../constants/microCopy";
@@ -9,7 +12,6 @@ import Loader from "../../components/shared/Loader";
 import { formatDateRange, findDigit } from "../../util";
 import { auth } from "../../firebase-config";
 import { Link } from "react-router-dom";
-
 
 const {
   wish: { replaceText },
@@ -41,15 +43,27 @@ const Event = () => {
         eventId: item.id,
         userId: auth.currentUser?.uid,
       };
-      
+
       dispatch(addWishItemToDb(wishItem));
 
       setQuantity(1);
     }
   };
-  const purchaseTickets = (quantity: number) => {
-    //TO DO: The same as wishitems 
-    console.log(quantity);
+
+  const purchaseTickets = (item: any) => {
+    if (auth.currentUser) {
+      const boughtItem = {
+        image: item.images[0]?.url,
+        text: item.placeNote || replaceText,
+        tickets: quantity,
+        eventId: item.id,
+        userId: auth.currentUser?.uid,
+      };
+
+      dispatch(addBoughtItemToDb(boughtItem));
+
+      setQuantity(1);
+    }
   };
 
   // Templates
@@ -160,7 +174,7 @@ const Event = () => {
             {currentUser && (
               <div className="action">
                 <button
-                  onClick={() => purchaseTickets(quantity)}
+                  onClick={() => purchaseTickets(currentEvent)}
                   className="cta-button"
                 >
                   Purchase
