@@ -1,20 +1,23 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { useEffect } from "react";
-import { useAppDispatch } from "./store";
-import {
-  fetchAllEvents,
-  fetchSuggestedEvenets,
-} from "./store/Event/eventActions";
+import { useAppDispatch, useAppSelector } from "./store";
+import { fetchAllEvents, fetchSuggestedEvenets } from "./store/Event/eventActions";
+import { EventInterface } from "./models/index";
 
-import { Event, Login, Register, Home, NotFound, Wish } from "./pages";
-
+import { Event, Login, Register, Home, NotFound, Wish, Cart } from "./pages";
+import Loader from "./components/shared/Loader";
 import Header from "./components/Header/Header";
 
 const Layout = () => {
+  const loadingState: string = useAppSelector((state) => state.event.status);
+  const events: EventInterface[] = useAppSelector((state) => state.event.events);
+
   return (
     <div className="App">
       <Header />
-      <Outlet />
+      {loadingState === "success" && <Outlet />}
+      {loadingState === "loading" && <Loader />}
+      {loadingState === "failed" && !events.length && <div>Something went wrong please try again</div>}
     </div>
   );
 };
@@ -45,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "/wishlist",
         element: <Wish />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "*",

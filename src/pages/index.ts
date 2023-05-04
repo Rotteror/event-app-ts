@@ -4,3 +4,4 @@ export { default as NotFound } from "./NotFound/NotFound";
 export { default as Wish } from "./Wish/Wish";
 export { default as Login } from "./UserAdministration/Login";
 export { default as Register } from "./UserAdministration/Register";
+export { default as Cart } from "./Cart/Cart";

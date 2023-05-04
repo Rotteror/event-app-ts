@@ -8,6 +8,8 @@ import microCopy from "../../constants/microCopy";
 import Loader from "../../components/shared/Loader";
 import { formatDateRange, findDigit } from "../../util";
 import { auth } from "../../firebase-config";
+import { Link } from "react-router-dom";
+
 
 const {
   wish: { replaceText },
@@ -27,6 +29,7 @@ const Event = () => {
   }, []);
 
   const currentEvent = useAppSelector((state) => state.event.currentEvent);
+  const currentUser = useAppSelector((state) => state.user.user.email);
 
   //Methods
   const addWishTickets = (item: any) => {
@@ -38,12 +41,14 @@ const Event = () => {
         eventId: item.id,
         userId: auth.currentUser?.uid,
       };
+      
       dispatch(addWishItemToDb(wishItem));
+
       setQuantity(1);
     }
   };
   const purchaseTickets = (quantity: number) => {
-    //
+    //TO DO: The same as wishitems 
     console.log(quantity);
   };
 
@@ -129,41 +134,55 @@ const Event = () => {
                 {currentEvent?.pleaseNote || "N/A"}
               </p>
             </div>
-            <div className="quantity">
-              <button
-                onClick={() =>
-                  setQuantity((prev: any) => (prev === 1 ? 1 : prev - 1))
-                }
-              >
-                -
-              </button>
-              {quantity}
-              <button
-                onClick={() =>
-                  setQuantity((prev: any) =>
-                    prev === mappedEvent.ticketLimit
-                      ? mappedEvent.ticketLimit
-                      : prev + 1
-                  )
-                }
-              >
-                +
-              </button>
-            </div>
-            <div className="action">
-              <button
-                onClick={() => purchaseTickets(quantity)}
-                className="cta-button"
-              >
-                Purchase
-              </button>
-              <button
-                onClick={() => addWishTickets(currentEvent)}
-                className="cta-button"
-              >
-                Add to Wish List
-              </button>
-            </div>
+            {currentUser && (
+              <div className="quantity">
+                <button
+                  onClick={() =>
+                    setQuantity((prev: any) => (prev === 1 ? 1 : prev - 1))
+                  }
+                >
+                  -
+                </button>
+                {quantity}
+                <button
+                  onClick={() =>
+                    setQuantity((prev: any) =>
+                      prev === mappedEvent.ticketLimit
+                        ? mappedEvent.ticketLimit
+                        : prev + 1
+                    )
+                  }
+                >
+                  +
+                </button>
+              </div>
+            )}
+            {currentUser && (
+              <div className="action">
+                <button
+                  onClick={() => purchaseTickets(quantity)}
+                  className="cta-button"
+                >
+                  Purchase
+                </button>
+                <button
+                  onClick={() => addWishTickets(currentEvent)}
+                  className="cta-button"
+                >
+                  Add to Wish List
+                </button>
+              </div>
+            )}
+            {!currentUser && (
+              <div className="login-container">
+                <div className="message">
+                  Please log in so you can purchase tickets
+                </div>
+                <Link className="link-button" to="/login">
+                  Login
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

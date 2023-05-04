@@ -1,6 +1,7 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, createAction } from "@reduxjs/toolkit";
 import { EventInterface } from "../../models/index";
 import { Suggested, Attractions, Products, Venue } from "../../models/suggest";
+import {fetchAllEvents, fetchSuggestedEvenets, fetctEventDetail, fetchFilteredEvents} from './eventActions'
 
 type State = {
   events: EventInterface[];
@@ -12,6 +13,7 @@ type State = {
   };
   currentEvent: EventInterface;
   filteredEvents: EventInterface[];
+  status: string
 };
 
 const initialState: State = {
@@ -24,6 +26,7 @@ const initialState: State = {
   },
   currentEvent: {} as EventInterface,
   filteredEvents: [],
+  status:'idle'
 };
 
 const eventSlice = createSlice({
@@ -49,6 +52,20 @@ const eventSlice = createSlice({
     setCurrentEvent(state, action: PayloadAction<EventInterface>) {
       state.currentEvent = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchAllEvents.fulfilled, (state, action ) => {
+        state.events = action.payload?._embedded.events || [];
+        state.status = 'success'
+        return state
+      })
+      .addCase(fetchAllEvents.pending, (state, action ) => {
+        state.status = 'loading'
+      })
+      .addCase(fetchAllEvents.rejected, (state) => {
+        state.status = "failed";
+      })
   },
 });
 

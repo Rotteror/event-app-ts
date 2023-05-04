@@ -13,7 +13,12 @@ import { User, WishItem } from "../../models/user-administration";
 export const addWishItemToDb = (
   item: WishItem
 ): ThunkAction<void, RootState, unknown, AnyAction> => {
-  return async (dispatch, _) => {
+  return async (dispatch, getState) => {
+    const alreadyAdded = getState().user.user.wishlist.find(
+      (wish) => wish.eventId === item.eventId
+    );
+    if (alreadyAdded) return;
+
     await addEventToWishList(item);
     dispatch(addWishList(item));
   };

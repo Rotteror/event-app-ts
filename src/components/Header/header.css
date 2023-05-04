@@ -1,27 +1,31 @@
 .site-header {
-    display: grid;
-    grid-template-columns: 37rem 1fr auto;
-    align-items: center;
-    border-bottom: 1px solid var(--color-grey-5);
-    padding: 0 2rem;
-  }
-  
-  .site-header a {
-    font-size: 2.4rem;  
-    display: block;
-    color: var(--color-black);
-  }
-  
-  .primary, .secondary {
-      padding: 1.5rem;
-  }
-  
-  .header-menu {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      font-size: 1.8rem;
-      font-weight: 400;
-      color: var(--color-grey-3);
-  }
-  
+  display: grid;
+  grid-template-columns: 37rem 1fr auto;
+  align-items: center;
+  border-bottom: 1px solid var(--color-grey-5);
+  padding: 0 2rem;
+}
+
+.site-header a {
+  font-size: 2.4rem;
+  display: block;
+  color: var(--color-black);
+}
+
+.primary,
+.secondary {
+  padding: 1.5rem;
+}
+
+.header-menu {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--color-grey-3);
+}
+
+.container-with-badge {
+  display: flex;
+}

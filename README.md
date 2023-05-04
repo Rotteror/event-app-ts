@@ -2,7 +2,7 @@
 
 Event app built with React.
 
-You can use `test@example.com` and password `123456` to look around or just create your own account.
+You can use `test@example.com` and password `Welcome@123` to look around or just create your own account.
 
 ## Getting Started
 

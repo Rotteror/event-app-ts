@@ -6,13 +6,26 @@ import { auth } from "../../firebase-config";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { logoutUser } from "../../store/User/userSlice";
 import { User } from "../../models/user-administration";
+import Badge from "../shared/Badge";
+import { useState, useEffect } from "react";
 
 const Header = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  
+  const userInfo = useAppSelector((state) => state.user);
+  const currentUserWishlist: any = userInfo.user.wishlist.length;
+  const currentUserCartlist: any = userInfo.user.purchases.length;
+
+  const [wishlistItems, setWishlistItems] = useState(currentUserWishlist);
+  const [cartlistItems, setCartlistItems] = useState(currentUserCartlist);
+
   const currentUser: User = useAppSelector((state) => state.user.user);
   const isAuth: boolean = currentUser.email !== "";
+
+  useEffect(() => {
+    setWishlistItems(currentUserWishlist);
+    setCartlistItems(currentUserCartlist);
+  }, [currentUserWishlist, currentUserCartlist]);
 
   const logoutHandler = async (e: any) => {
     e.preventDefault();
@@ -32,7 +45,7 @@ const Header = () => {
       <div className="primary">
         <ul className="header-menu">
           <li>
-            <Link to="/events">Events</Link>
+            <Link to="/">Events</Link>
           </li>
         </ul>
       </div>
@@ -41,8 +54,13 @@ const Header = () => {
           {isAuth && (
             <>
               <li>Welcome {currentUser.email}</li>
-              <li>
+              <li className="container-with-badge">
                 <Link to="/wishlist">Wishlist</Link>
+                <Badge items={wishlistItems} />
+              </li>
+              <li className="container-with-badge">
+                <Link to="/cart">Cart</Link>
+                <Badge items={cartlistItems} />
               </li>
               <li>
                 <Link to="/" onClick={logoutHandler}>

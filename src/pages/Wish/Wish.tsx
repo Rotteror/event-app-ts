@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../store/index";
 import WishItem from "../../components/Wish/WishItem";
 import { auth } from "../../firebase-config";
 import { fetchUser } from "../../store/User/userAction";
+import { EmptyState } from "../../components/shared/EmptyState";
 
 const Wish = () => {
   const wishTemplate = useRef("");
@@ -35,6 +36,8 @@ const Wish = () => {
     });
     await pdf.save();
   };
+
+  if (currentWishList.length === 0) return <EmptyState />;
 
   return (
     <div className="wish-list">

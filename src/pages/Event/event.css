@@ -38,6 +38,7 @@ img {
   flex: 1;
   align-items: flex-end;
   justify-content: center;
+  padding: 1rem;
 }
 
 .note {
@@ -46,7 +47,7 @@ img {
 }
 
 .cta-button {
-  padding: 2rem 5rem;
+  padding: 1rem;
   font-size: 2rem;
   border-radius: 10px;
   background-color: var(--color-grey-6);
@@ -54,7 +55,6 @@ img {
 }
 
 .cta-button:hover {
-  border: none;
   background-color: inherit;
   color: var(--color-grey-1);
 }
@@ -76,4 +76,35 @@ img {
   cursor: pointer;
 
   border: none;
+}
+
+.message {
+  padding: 1rem;
+  color: var(--color-red);
+}
+
+.login-container {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.link-button {
+  text-decoration: none;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: solid 1px black;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--color-grey-6);
+  color: var(--color-grey-9);
+}
+
+.link-button:hover {
+  background-color: inherit;
+  color: var(--color-grey-1);
 }

@@ -19,9 +19,6 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     addWishList(state, action: PayloadAction<WishItem>) {
-      const id = action.payload.eventId;
-      if (state.user.wishlist.filter((wishItem) => wishItem.eventId === id))
-        return;
       state.user.wishlist.push(action.payload);
     },
 
